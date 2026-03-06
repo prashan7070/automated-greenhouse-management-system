@@ -8,7 +8,9 @@ spring:
     config:
       server:
         git:
-          uri: file:///D:/Microservice project/automated-greenhouse-management-system/config-repo
+          uri: file:///D:/Microservice project/automated-greenhouse-management-system
+          search-paths: config-repo
+          default-label: main
 
 eureka:
   client:
