@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 @Component
 public class RouteValidator {
 
-    // Token එකක් නැතුව යන්න පුළුවන් endpoints මෙතන දාන්න
+
     public static final List<String> openApiEndpoints = List.of(
             "/auth/register",
             "/auth/login",
