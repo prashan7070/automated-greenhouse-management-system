@@ -10,7 +10,7 @@ import java.security.Key;
 
 @Component
 public class JwtUtil {
-    
+
     @Value("${jwt.secret}")
     private String secret;
 
