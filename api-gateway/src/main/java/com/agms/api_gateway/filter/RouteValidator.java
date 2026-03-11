@@ -1,0 +1,24 @@
+package com.agms.api_gateway.filter;
+
+import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.stereotype.Component;
+
+import java.util.*;
+import java.util.function.Predicate;
+
+@Component
+public class RouteValidator {
+
+    // Token එකක් නැතුව යන්න පුළුවන් endpoints මෙතන දාන්න
+    public static final List<String> openApiEndpoints = List.of(
+            "/auth/register",
+            "/auth/login",
+            "/eureka"
+    );
+
+    public Predicate<ServerHttpRequest> isSecured =
+            request -> openApiEndpoints
+                    .stream()
+                    .noneMatch(uri -> request.getURI().getPath().contains(uri));
+
+}
