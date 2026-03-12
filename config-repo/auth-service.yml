@@ -5,12 +5,11 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/agms_auth_db
     username: root
-    password: root
+    password: root 
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-
 
 jwt:
   secret: "BvL6V+G9Y7f2N6p5D9Z8x1C2v3B4n5M6q7W8e9R0t1Y2u3I4o5P6a7S8d9F0g1H2"

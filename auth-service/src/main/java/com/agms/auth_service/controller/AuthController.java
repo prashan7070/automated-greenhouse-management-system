@@ -15,12 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
-
     @Autowired
     private AuthService service;
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    @Autowired private AuthenticationManager authenticationManager;
 
     @PostMapping("/register")
     public String addNewUser(@RequestBody UserCredential user) {
@@ -29,16 +26,13 @@ public class AuthController {
 
     @PostMapping("/login")
     public String getToken(@RequestBody AuthRequest authRequest) {
-        
         Authentication authenticate = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
         );
-
         if (authenticate.isAuthenticated()) {
             return service.generateToken(authRequest.getUsername());
         } else {
             throw new RuntimeException("Invalid access");
         }
     }
-
 }
