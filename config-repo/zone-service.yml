@@ -10,3 +10,8 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+external:
+  iot:
+    base-url: "http://104.211.95.241:8080/api"
+    username: "agms_prashan_7070"
+    password: "Iot@Prashan123"
