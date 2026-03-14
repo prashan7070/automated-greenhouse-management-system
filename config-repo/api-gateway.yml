@@ -28,3 +28,10 @@ spring:
             - Path=/api/zones/**
           filters:
             - AuthenticationFilter
+
+        - id: sensor-service
+          uri: lb://SENSOR-SERVICE
+          predicates:
+            - Path=/api/sensors/**
+          filters:
+            - AuthenticationFilter

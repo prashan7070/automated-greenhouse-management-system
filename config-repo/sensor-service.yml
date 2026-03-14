@@ -1,0 +1,12 @@
+server:
+  port: 8082
+
+external:
+  iot:
+    base-url: "http://104.211.95.241:8080/api"
+    username: "agms_prashan_7070"
+    password: "Iot@Prashan123"
+
+automation:
+  service:
+    process-url: "/api/automation/process"
