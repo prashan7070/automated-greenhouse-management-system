@@ -19,26 +19,26 @@ public class SensorServiceImpl implements SensorService {
     @Value("${external.iot.username}") private String username;
     @Value("${external.iot.password}") private String password;
 
-    private TelemetryResponse lastFetchedData; // Debug view එක සඳහා
+    private TelemetryResponse lastFetchedData; // For testing/demo purposes
 
     @Override
     public void fetchAndProcessTelemetry() {
         try {
-            // 1. External Login
+            // External Login
             ExternalAuthRequest authReq = new ExternalAuthRequest(username, password);
             String token = "Bearer " + iotClient.login(authReq).get("accessToken").toString();
 
-            // 2. Get All Registered Zones
+            // Get All Registered Zones
             List<Map<String, Object>> zones = zoneClient.getAllZones();
 
             for (Map<String, Object> zone : zones) {
                 String deviceId = zone.get("deviceId").toString();
 
-                // 3. Fetch Live Telemetry
+                // Fetch Live Telemetry
                 TelemetryResponse data = iotClient.getTelemetry(token, deviceId);
                 this.lastFetchedData = data;
 
-                // 4. Push to Automation Service
+                //Push to Automation Service
                 automationClient.sendTelemetryToProcess(data);
 
                 System.out.println(">>> Telemetry Sent for Device: " + deviceId);
