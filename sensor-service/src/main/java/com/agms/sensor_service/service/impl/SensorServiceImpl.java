@@ -76,7 +76,7 @@ public class SensorServiceImpl implements SensorService {
                     this.lastFetchedData = data;
                     System.out.println(">>> SUCCESS: Fetched data for " + deviceId + ": " + data.getValue());
 
-                    // automationClient.sendTelemetryToProcess(data);
+                     automationClient.sendTelemetryToProcess(data);
                     
                 } else {
                     System.out.println("!!! WARNING: Telemetry data for " + deviceId + " is null");
