@@ -15,8 +15,11 @@ public class CropController {
     private CropService cropService;
 
     @PostMapping
-    public CropDTO registerBatch(@RequestBody CropDTO cropDTO) {
-        return cropService.registerBatch(cropDTO);
+    public CropDTO register(
+            @RequestBody CropDTO cropDTO,
+            @RequestHeader("Authorization") String token
+    ) {
+        return cropService.registerBatch(cropDTO, token);
     }
 
     @GetMapping

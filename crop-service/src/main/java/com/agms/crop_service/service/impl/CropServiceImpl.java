@@ -22,13 +22,13 @@ public class CropServiceImpl implements CropService {
     private ZoneClient zoneClient;
 
     @Override
-    public CropDTO registerBatch(CropDTO cropDTO) {
+    public CropDTO registerBatch(CropDTO cropDTO, String token) {
 
         //check if zone exists
         try {
-            zoneClient.getZoneById(Integer.parseInt(cropDTO.getZoneId()));
+            zoneClient.getZoneById(token, Integer.parseInt(cropDTO.getZoneId()));
         } catch (Exception e) {
-            throw new RuntimeException("Validation Failed: Zone ID " + cropDTO.getZoneId() + " does not exist!");
+            throw new RuntimeException("Invalid Zone ID or Access Denied!");
         }
 
         // 2. Map DTO to Entity

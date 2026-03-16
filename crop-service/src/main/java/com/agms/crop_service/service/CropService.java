@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface CropService {
 
-    CropDTO registerBatch(CropDTO cropDTO);
+    CropDTO registerBatch(CropDTO cropDTO,String token);
     List<CropDTO> getAllBatches();
     CropDTO updateStatus(Integer id, String status);
 
