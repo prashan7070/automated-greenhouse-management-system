@@ -24,6 +24,7 @@ public class CropServiceImpl implements CropService {
     @Override
     public CropDTO registerBatch(CropDTO cropDTO) {
 
+        //check if zone exists
         try {
             zoneClient.getZoneById(Integer.parseInt(cropDTO.getZoneId()));
         } catch (Exception e) {
@@ -35,7 +36,7 @@ public class CropServiceImpl implements CropService {
         batch.setCropName(cropDTO.getCropName());
         batch.setZoneId(cropDTO.getZoneId());
         batch.setPlantedDate(LocalDate.now());
-        batch.setStatus("SEEDLING");
+        batch.setStatus("SEEDLING"); // default status when registering a new batch
 
         CropBatch savedBatch = repository.save(batch);
 
